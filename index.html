@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arapça Harf-i Cer Sunumu</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-8 bg-white rounded-lg shadow-2xl">
+        <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">Arapça Harf-i Cer Sunumu</h1>
+        
+        <div id="slideContainer" class="space-y-8">
+            <div class="slide active">
+                <h2 class="text-2xl font-semibold mb-4">Giriş</h2>
+                <p class="mb-4">Bu sunum, Arap dilindeki Harf-i Cerler ve kullanım boyutlarını ayrıntılı olarak inceleyen bir yüksek lisans tezinin özetini sunmaktadır.</p>
+                <img src="/api/placeholder/800/400" alt="Arapça Yazı Örneği" class="w-full rounded-lg shadow-md">
+            </div>
+
+            <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4">1. Harf-i Cer Kavramı</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Harf Kelimesi: Dilbilimde "harf", bir kenarda durmak, bir şeyi sınırlamak anlamına gelir.</li>
+                    <li>Cer Kelimesi: Cer, çekmek, aşağı indirmek anlamlarına gelir.</li>
+                    <li>Harf-i Cerler: Bir isimle kullanılarak o ismi cer eder ve cümlenin anlamını etkiler.</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4">2. Harf-i Cerlerin Kullanım Alanları</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-xl font-medium mb-2">İttifak Edilenler</h3>
+                        <p>Örnek: bi (ile), min (den), fi (içinde)</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium mb-2">İhtilaf Edilenler</h3>
+                        <p>Örnek: ala (üzerine)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4">3. Harf-i Cerlerin Gramerdeki Rolü</h2>
+                <p class="mb-4">Harf-i cerler, cümledeki kelimeler arasında anlamsal bağlar kurar ve gramerin önemli yapı taşlarıdır.</p>
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <h3 class="text-xl font-medium mb-2">Örnekler:</h3>
+                    <ul class="list-disc list-inside">
+                        <li>Fi: "Ali fi'l-mesjid" (Ali camide)</li>
+                        <li>Min: "Ketebtü min kitabihi" (Onun kitabından yazdım)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4">4. Harf-i Cerlerin Sınıflandırılması</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Yapıları itibariyle</li>
+                    <li>Amel etmeleri itibariyle</li>
+                    <li>Kullanım koşulları</li>
+                </ul>
+                <img src="/api/placeholder/800/400" alt="Harf-i Cer Sınıflandırması" class="w-full mt-4 rounded-lg shadow-md">
+            </div>
+
+            <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4">5. Harf-i Cerlerin Özel Durumları</h2>
+                <p class="mb-4">Bazı durumlarda harf-i cerler cümleden gizlenebilir veya fazlalık olarak kabul edilebilirler.</p>
+                <div class="bg-yellow-100 p-4 rounded-lg">
+                    <p class="font-medium">Not: Harf-i cerlerin hazfedildiği, yani cümleden çıkarıldığı durumlar da vardır, fakat anlam bozulmaz.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4">Sonuç</h2>
+                <p class="mb-4">Harf-i cerler, Arapça dilinde anlam ilişkilerini oluşturan kritik dil unsurlarıdır. Arapça'nın gramer ve anlam açısından zengin yapısının önemli bir parçasını oluştururlar.</p>
+                <img src="/api/placeholder/800/400" alt="Arapça Metin Örneği" class="w-full rounded-lg shadow-md">
+            </div>
+        </div>
+
+        <div class="flex justify-between mt-8">
+            <button id="prevBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Önceki</button>
+            <button id="nextBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Sonraki</button>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+    </script>
+</body>
+</html>
